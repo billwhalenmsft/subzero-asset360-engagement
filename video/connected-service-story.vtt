@@ -1,0 +1,106 @@
+WEBVTT
+
+00:00:00.600 --> 00:00:04.424
+A connected service moment begins with uncertainty. Asset 360
+
+00:00:04.424 --> 00:00:08.310
+brings authorized appliance evidence into the flow of work, so
+
+00:00:08.310 --> 00:00:12.322
+teams can move from a reported issue to the next useful question
+
+00:00:12.322 --> 00:00:14.328
+without guessing at a diagnosis.
+
+00:00:15.600 --> 00:00:19.894
+In Dynamics 365 Customer Service, the case remains the workspace.
+
+00:00:19.894 --> 00:00:24.121
+Asset 360 opens beside the existing Service Toolkit and resolves
+
+00:00:24.121 --> 00:00:28.151
+the saved case to its assigned appliance. Profile information
+
+00:00:28.151 --> 00:00:31.784
+stays separate from connected evidence, and the service
+
+00:00:31.784 --> 00:00:36.012
+representative never has to leave the case to understand what is
+
+00:00:36.012 --> 00:00:36.408
+known.
+
+00:00:41.600 --> 00:00:45.814
+For a Cove dishwasher reported as not draining, the view separates
+
+00:00:45.814 --> 00:00:50.029
+observations from interpretation. The example shows repeated drain
+
+00:00:50.029 --> 00:00:54.180
+attempts, no reported level change, source time, and missing-data
+
+00:00:54.180 --> 00:00:58.203
+behavior. Those signals support focused validation, but they do
+
+00:00:58.203 --> 00:01:01.906
+not prove a root cause, prescribe a repair, or declare the
+
+00:01:01.906 --> 00:01:02.864
+appliance safe.
+
+00:01:07.600 --> 00:01:11.617
+The Connected Appliance Advisor publishes the same protected,
+
+00:01:11.617 --> 00:01:15.633
+read-only service contract into Microsoft 365 Copilot. A case
+
+00:01:15.633 --> 00:01:19.979
+number resolves to the authorized appliance through a bounded tool
+
+00:01:19.979 --> 00:01:23.799
+call. The response labels synthetic data, returns only the
+
+00:01:23.799 --> 00:01:27.947
+requested context, and stops instead of silently taking another
+
+00:01:27.947 --> 00:01:28.408
+action.
+
+00:01:32.600 --> 00:01:36.576
+In Copilot Cowork, the installed Asset 360 plugin uses that
+
+00:01:36.576 --> 00:01:40.890
+protected service directly. One profile-mode snapshot mounts the
+
+00:01:40.890 --> 00:01:45.203
+native Microsoft MCP Apps renderer and the interactive appliance
+
+00:01:45.203 --> 00:01:49.584
+card. History and explanation tools remain untouched, and no case
+
+00:01:49.584 --> 00:01:54.032
+update, message, appliance command, or repair action is performed.
+
+00:01:58.600 --> 00:02:02.680
+Across each surface, identity and permissions stay behind the
+
+00:02:02.680 --> 00:02:07.094
+experience. The system presents evidence, freshness, unknowns, and
+
+00:02:07.094 --> 00:02:11.441
+a next validation question. Qualified people still decide whether
+
+00:02:11.441 --> 00:02:15.588
+to continue troubleshooting, contact Customer Care, or arrange
+
+00:02:15.588 --> 00:02:16.792
+certified service.
+
+00:02:18.600 --> 00:02:22.440
+One governed evidence contract, available where service work
+
+00:02:22.440 --> 00:02:26.472
+happens. The next step is to validate an approved customer data
+
+00:02:26.472 --> 00:02:29.544
+sample and measure the service outcome together.

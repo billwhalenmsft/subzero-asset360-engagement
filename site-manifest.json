@@ -1,0 +1,148 @@
+{
+  "schema": "CUSTOMER_SITE_MANIFEST/1",
+  "packageVersion": "0.1.0",
+  "generatedOn": "2026-09-21",
+  "customer": {
+    "name": "Sub-Zero Group",
+    "slug": "subzero"
+  },
+  "title": "Sub-Zero Connected Appliance Service | MCAPS OS | SE OS",
+  "purpose": "Customer-facing project hub for gathered findings, prototype state, open questions and next steps; tokenomics deferred until assumptions are validated.",
+  "audience": "Sub-Zero service and technology teams",
+  "skin": {
+    "id": "studio",
+    "name": "Studio",
+    "registry": "CUSTOMER_HUB_SKIN_REGISTRY/1"
+  },
+  "branding": {
+    "mode": "skin-only",
+    "evidenceTier": "official-site-observed-not-applied",
+    "exactTpidResolution": true,
+    "observedCandidatesAllowed": false,
+    "bundledCustomerAssets": false,
+    "effectiveVisuals": "Microsoft-neutral Atomic/Orbit",
+    "hostBrand": "MCAPS OS | SE OS",
+    "coBrandLockup": [
+      "Sub-Zero",
+      "Wolf",
+      "Microsoft",
+      "SE OS Atom"
+    ],
+    "assetTreatment": "Inline typographic and geometric marks; no downloaded customer assets"
+  },
+  "generatedFiles": [
+    "index.html",
+    "prototype.html",
+    "assets/prototype.png",
+    "assets/prototype-mobile.png",
+    "gate.js",
+    "README.md",
+    "robots.txt",
+    "site-manifest.json",
+    "THIRD-PARTY-NOTICES.txt",
+    "video/connected-service-story.mp4",
+    "video/connected-service-story.vtt",
+    "video/connected-service-story.srt",
+    "video/connected-service-story-poster.png"
+  ],
+  "referencedAssets": [
+    "prototype.html",
+    "assets/prototype.png",
+    "assets/prototype-mobile.png",
+    "video/connected-service-story.mp4",
+    "video/connected-service-story.vtt",
+    "video/connected-service-story.srt",
+    "video/connected-service-story-poster.png"
+  ],
+  "externalLinks": [
+    "https://www.subzero-wolf.com/assistance/answers/cove/dishwasher/cove-dishwasher-does-not-drain",
+    "https://www.subzero-wolf.com/assistance/answers/cove/dishwasher/cove-dishwasher-error-code-600149",
+    "https://www.subzero-wolf.com/assistance/answers/multi-brand/subzero-wolf-and-cove-connected-appliance-change-internet-provider-or-network-name",
+    "https://www.subzero-wolf.com/assistance/answers/cove/dishwasher/cove-dishwasher-cleaning-guide",
+    "https://www.subzero-wolf.com/assistance/answers/brandless/customer-care-contact-information",
+    "https://www.subzero-wolf.com/assistance/answers"
+  ],
+  "gate": {
+    "type": "password",
+    "mechanism": "gate.js",
+    "configuration": "configured",
+    "expires": "2026-12-31",
+    "softGate": true,
+    "expiryApproval": "bound to final package publication approval"
+  },
+  "destination": {
+    "state": "local-update-awaiting-publication-approval",
+    "public": false,
+    "url": null,
+    "repository": null
+  },
+  "externalEffects": {
+    "uploaded": false,
+    "published": false,
+    "registered": false,
+    "shared": false,
+    "messageSent": false
+  },
+  "readyToPublish": true,
+  "nativeInstalled": true,
+  "projectState": {
+    "stage": "demo-ready-customer-validation-next",
+    "tokenomics": "deferred",
+    "customerDataConnected": false,
+    "verifiedDemoHosts": [
+      "Dynamics 365",
+      "Microsoft 365 Copilot",
+      "Copilot Cowork"
+    ]
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "9fcd7331b128516d6a5d865589d27b9d06fbfebab1437d6176d5abefc9a9d2ca"
+    },
+    {
+      "path": "prototype.html",
+      "sha256": "cf36b7e857ca9d99c39e03587fc13b0c452caef37e15ab2091c70e3f5580cbd4"
+    },
+    {
+      "path": "assets/prototype.png",
+      "sha256": "3fa07a24c0c1e7cc5ecac18c71d195de4d90a264a68d9e23f32a09e9dbd94bdb"
+    },
+    {
+      "path": "assets/prototype-mobile.png",
+      "sha256": "08ee63fbfe3b498bdeaa774ddcac06f8c350e88e4393831474d64132daf6b00a"
+    },
+    {
+      "path": "gate.js",
+      "sha256": "3e5c23c17ee88afda4baf2db090f19db7f35a9e40f4822ab21b4f8c44410d49f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2a3add724e64acde7ce77077d0271f2f245f6ceafd9deff61a0c53c65ec670f9"
+    },
+    {
+      "path": "robots.txt",
+      "sha256": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.txt",
+      "sha256": "16ba165f4e1f78a0617665a833551a71e33f0f839d8caa5e0cd6153c278c5c82"
+    },
+    {
+      "path": "video/connected-service-story.mp4",
+      "sha256": "3464750bc4ffd65497e5e40f36f0d4763f6bbae220eda361f2670e5f69b6d744"
+    },
+    {
+      "path": "video/connected-service-story.vtt",
+      "sha256": "8eb2c8939637b172260a6c7550a9ec3ececa0c7a11bf8561500dc8adc125e132"
+    },
+    {
+      "path": "video/connected-service-story.srt",
+      "sha256": "2394698fb20e38092989afa0969c05183f30ec7502cbdd438093664ef8e18eed"
+    },
+    {
+      "path": "video/connected-service-story-poster.png",
+      "sha256": "4b0c2990bcb5e2cb33bce6fe4dc490b56de6e62c77fd57133e7a082ed8a7939a"
+    }
+  ]
+}

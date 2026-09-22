@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en" class="project-hub" data-visual-style="atomic-orbit" data-skin="studio" data-brand-overlay="skin-only">
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="icon" href="assets/prototype.png" type="image/png">
+  <title>Sub-Zero Connected Appliance Service | MCAPS OS | SE OS</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <script src="gate.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+      --skin-hero: var(--cp-text);
+      --skin-hero-fg: var(--cp-bg-elevated);
+      --skin-grid-size: 64px;
+      --skin-card-radius: 8px;
+      --skin-section-space: 72px;
+      --skin-max-width: 1180px;
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    html[data-skin="orbital"] {
+      --cp-accent: #a61e4d;
+      --cp-accent-hover: #86183e;
+      --cp-link: #0067b8;
+      --skin-hero: #242424;
+      --skin-hero-fg: #ffffff;
+    }
+    html[data-theme="dark"][data-skin="orbital"] {
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #ffacba;
+      --cp-link: #67b7f7;
+      --skin-hero: #202020;
+      --skin-hero-fg: #ffffff;
+    }
+    html[data-skin="executive"] {
+      --cp-bg: #f4f6f3;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #146c43;
+      --cp-accent-hover: #0e5031;
+      --cp-link: #005a9e;
+      --skin-hero: #f2f6f3;
+      --skin-hero-fg: #1f2a23;
+      --skin-section-space: 52px;
+      --skin-max-width: 1040px;
+    }
+    html[data-theme="dark"][data-skin="executive"] {
+      --cp-bg: #252925;
+      --cp-bg-elevated: #202320;
+      --cp-accent: #6fd6a2;
+      --cp-accent-hover: #8be5b6;
+      --cp-link: #67b7f7;
+      --skin-hero: #202622;
+      --skin-hero-fg: #f5f7f5;
+    }
+    html[data-skin="workshop"] {
+      --cp-bg: #f6f4ef;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #005a9e;
+      --cp-accent-hover: #004578;
+      --cp-link: #8a3700;
+      --skin-hero: #eaf3f8;
+      --skin-hero-fg: #1f2933;
+      --skin-section-space: 60px;
+    }
+    html[data-theme="dark"][data-skin="workshop"] {
+      --cp-bg: #322f2b;
+      --cp-bg-elevated: #292725;
+      --cp-accent: #67b7f7;
+      --cp-accent-hover: #8ccbfa;
+      --cp-link: #ffb36b;
+      --skin-hero: #1d2830;
+      --skin-hero-fg: #f7fafc;
+    }
+    html[data-skin="blueprint"] {
+      --cp-bg: #f1f6f6;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #006b78;
+      --cp-accent-hover: #004f59;
+      --cp-link: #005a9e;
+      --skin-hero: #eaf4f5;
+      --skin-hero-fg: #173238;
+      --skin-card-radius: 4px;
+      --skin-section-space: 56px;
+    }
+    html[data-theme="dark"][data-skin="blueprint"] {
+      --cp-bg: #263234;
+      --cp-bg-elevated: #202a2c;
+      --cp-accent: #62ced6;
+      --cp-accent-hover: #84dce2;
+      --cp-link: #75bfff;
+      --skin-hero: #17282b;
+      --skin-hero-fg: #eff9fa;
+    }
+    html[data-skin="studio"] {
+      --cp-bg: #f6f3f1;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #b42318;
+      --cp-accent-hover: #8f1c13;
+      --cp-link: #005a9e;
+      --skin-hero: #262626;
+      --skin-hero-fg: #ffffff;
+      --skin-section-space: 80px;
+    }
+    html[data-theme="dark"][data-skin="studio"] {
+      --cp-bg: #302e2d;
+      --cp-bg-elevated: #272625;
+      --cp-accent: #ff8f85;
+      --cp-accent-hover: #ffada6;
+      --cp-link: #75bfff;
+      --skin-hero: #1d1d1d;
+      --skin-hero-fg: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--cp-bg); }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+    a { color: var(--cp-link); text-underline-offset: 3px; }
+    a:hover { color: var(--cp-accent-hover); }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid var(--cp-link);
+      outline-offset: 3px;
+    }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.12; letter-spacing: 0; }
+    h1 { margin-bottom: 20px; font-size: 56px; font-weight: 760; }
+    h2 { margin-bottom: 12px; font-size: 34px; font-weight: 740; }
+    h3 { margin-bottom: 8px; font-size: 21px; font-weight: 720; }
+    p { margin-bottom: 16px; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 10000;
+      padding: 10px 14px;
+      transform: translateY(-160%);
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-weight: 700;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .wrap { width: min(var(--skin-max-width), calc(100% - 48px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-panel-strong);
+    }
+    .header-inner {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand-line { color: var(--cp-text); font-size: 15px; font-weight: 800; text-decoration: none; }
+    .brand-line span { color: var(--cp-accent); }
+    .section-nav { display: flex; gap: 18px; overflow-x: auto; }
+    .section-nav a {
+      padding: 20px 0 17px;
+      border-bottom: 3px solid transparent;
+      color: var(--cp-text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .section-nav a:hover { border-bottom-color: var(--cp-link); color: var(--cp-link); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--skin-hero);
+      color: var(--skin-hero-fg);
+    }
+    .hero::after {
+      position: absolute;
+      right: -8%;
+      bottom: -30%;
+      width: 48%;
+      height: 100%;
+      border: 1px solid var(--cp-border-strong);
+      content: "";
+      transform: rotate(-12deg);
+      opacity: 0.45;
+    }
+    .hero-inner { position: relative; z-index: 1; padding: 72px 0 64px; }
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--cp-accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .hero h1 { max-width: 900px; color: var(--skin-hero-fg); }
+    .hero-summary { max-width: 760px; margin-bottom: 28px; color: var(--skin-hero-fg); font-size: 20px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .meta-item {
+      padding: 6px 10px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: var(--skin-card-radius);
+      color: var(--skin-hero-fg);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .button-primary { border-color: var(--cp-accent); background: var(--cp-accent); color: var(--cp-accent-fg); }
+    .button-primary:hover { border-color: var(--cp-accent-hover); background: var(--cp-accent-hover); color: var(--cp-accent-fg); }
+
+    .content-band { padding: var(--skin-section-space) 0; border-bottom: 1px solid var(--cp-border); }
+    .content-band:nth-child(even) { background: var(--cp-bg-elevated); }
+    .section-heading { display: grid; grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr); gap: 48px; margin-bottom: 32px; }
+    .section-summary { max-width: 720px; color: var(--cp-text-muted); font-size: 18px; }
+    .resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: resource; }
+    .resource-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface);
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+    }
+    .resource-media { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--cp-border); background: var(--cp-surface-soft); }
+    .resource-media img { width: 100%; height: 100%; object-fit: cover; }
+    .resource-body { display: flex; min-height: 230px; flex-direction: column; padding: 22px; }
+    .resource-type { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 18px; }
+    .chip {
+      padding: 4px 8px;
+      border: 1px solid var(--cp-border);
+      border-radius: var(--skin-card-radius);
+      color: var(--cp-text-muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .chip-format { border-color: var(--cp-accent); color: var(--cp-accent); }
+    .resource-description { flex: 1; color: var(--cp-text-muted); }
+    .resource-link { align-self: flex-start; font-weight: 800; }
+    .resource-link::after { content: " >"; }
+
+    html[data-skin="orbital"] .hero { border-bottom: 6px solid var(--cp-link); }
+    html[data-skin="orbital"] .hero .eyebrow,
+    html[data-skin="studio"] .hero .eyebrow { color: var(--skin-hero-fg); }
+    html[data-skin="orbital"] .resource-card { border-top: 4px solid var(--cp-accent); }
+    html[data-skin="executive"] .hero { min-height: 380px; }
+    html[data-skin="executive"] .hero::after { display: none; }
+    html[data-skin="executive"] .hero h1 { max-width: 780px; font-size: 48px; }
+    html[data-skin="executive"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-skin="executive"] .resource-card { border-width: 0 0 0 4px; box-shadow: none; }
+    html[data-skin="executive"] .resource-body { min-height: 210px; }
+    html[data-skin="workshop"] .hero { min-height: 430px; border-bottom: 8px solid var(--cp-warning); }
+    html[data-skin="workshop"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-skin="workshop"] .resource-card { counter-increment: resource; padding-left: 54px; }
+    html[data-skin="workshop"] .resource-card::before {
+      position: absolute;
+      top: 20px;
+      left: 16px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      content: counter(resource, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    html[data-skin="blueprint"] body {
+      background-image:
+        linear-gradient(var(--cp-accent-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cp-accent-soft) 1px, transparent 1px);
+      background-size: var(--skin-grid-size) var(--skin-grid-size);
+    }
+    html[data-skin="blueprint"] .hero { min-height: 430px; border-bottom: 1px solid var(--cp-accent); }
+    html[data-skin="blueprint"] .hero::after { right: 4%; bottom: 12%; width: 220px; height: 220px; transform: none; }
+    html[data-skin="blueprint"] .eyebrow,
+    html[data-skin="blueprint"] .chip { font-family: Consolas, "Courier New", Courier, monospace; }
+    html[data-skin="blueprint"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-skin="blueprint"] .resource-card { box-shadow: none; }
+    html[data-skin="studio"] .hero { min-height: 560px; border-bottom: 8px solid var(--cp-accent); }
+    html[data-skin="studio"] .resource-card:has(.resource-media) .resource-body { min-height: 210px; }
+    html[data-skin="studio"] .resource-media { aspect-ratio: 3 / 2; }
+
+    .site-footer { padding: 34px 0 44px; background: var(--cp-bg-elevated); color: var(--cp-text-muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid var(--cp-border); padding-top: 20px; }
+
+    @media (max-width: 900px) {
+      .section-heading { grid-template-columns: 1fr; gap: 10px; }
+      .resource-grid,
+      html[data-skin="executive"] .resource-grid,
+      html[data-skin="workshop"] .resource-grid,
+      html[data-skin="blueprint"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(var(--skin-max-width), calc(100% - 28px)); }
+      .header-inner { min-height: 56px; }
+      .section-nav { display: none; }
+      .hero,
+      html[data-skin="executive"] .hero,
+      html[data-skin="workshop"] .hero,
+      html[data-skin="blueprint"] .hero,
+      html[data-skin="studio"] .hero { min-height: 0; }
+      .hero-inner { padding: 52px 0 44px; }
+      h1,
+      html[data-skin="executive"] .hero h1 { font-size: 40px; }
+      h2 { font-size: 29px; }
+      .hero-summary { font-size: 18px; }
+      .resource-grid,
+      html[data-skin="executive"] .resource-grid,
+      html[data-skin="workshop"] .resource-grid,
+      html[data-skin="blueprint"] .resource-grid { grid-template-columns: 1fr; }
+      html[data-skin="workshop"] .resource-card { padding-left: 46px; }
+      .resource-body { min-height: 0; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+    @media print {
+      .site-header, .hero-actions { display: none; }
+      .hero { min-height: 0; border-bottom-width: 3px; }
+      .hero-inner, .content-band { padding: 28px 0; }
+      .resource-card { break-inside: avoid; box-shadow: none; }
+      .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      a { color: var(--cp-text); }
+    }
+  :root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #b11f4b;
+  --cp-accent-hover: #9a1a41;
+  --cp-accent-soft: rgba(177, 31, 75, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(177, 31, 75, 0.12);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #fd8ea1;
+  --cp-accent-hover: #fb7b91;
+  --cp-accent-soft: rgba(253, 142, 161, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(253, 142, 161, 0.12);
+}
+html[data-visual-style="atomic-orbit"] {
+  --cp-bg: #ffffff;
+  --cp-bg-elevated: #f7faff;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f0f5fb;
+  --cp-border: #d4dfed;
+  --cp-border-strong: #71829a;
+  --cp-text: #172b4d;
+  --cp-text-muted: #415775;
+  --cp-text-soft: #506580;
+  --cp-accent: #005a9e;
+  --cp-accent-hover: #004578;
+  --cp-accent-soft: rgba(0, 90, 158, 0.07);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #107c41;
+  --cp-danger: #b42332;
+  --cp-warning: #8a4b00;
+  --cp-link: #005a9e;
+  --cp-shadow: 0 8px 28px rgba(23, 43, 77, 0.10);
+  --cp-overlay: rgba(255, 255, 255, 0.90);
+  --cp-panel: rgba(255, 255, 255, 0.94);
+  --cp-panel-strong: rgba(255, 255, 255, 0.98);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(0, 90, 158, 0.10);
+}
+html[data-visual-style="atomic-orbit"][data-theme="dark"] {
+  --cp-bg: #17191c;
+  --cp-bg-elevated: #1b1e22;
+  --cp-surface: #22262b;
+  --cp-surface-soft: #2b3037;
+  --cp-border: #454f5d;
+  --cp-border-strong: #8293a9;
+  --cp-text: #f5f7fa;
+  --cp-text-muted: #c4cedb;
+  --cp-text-soft: #b6c4d7;
+  --cp-accent: #83c3ff;
+  --cp-accent-hover: #b4daff;
+  --cp-accent-soft: rgba(131, 195, 255, 0.10);
+  --cp-accent-fg: #152a40;
+  --cp-success: #70d59a;
+  --cp-danger: #ff9b9b;
+  --cp-warning: #f4c57a;
+  --cp-link: #91caff;
+  --cp-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  --cp-overlay: rgba(23, 25, 28, 0.94);
+  --cp-panel: rgba(34, 38, 43, 0.94);
+  --cp-panel-strong: rgba(34, 38, 43, 0.98);
+  --cp-sheen: rgba(255, 255, 255, 0.05);
+  --cp-highlight: rgba(131, 195, 255, 0.14);
+}
+html[data-visual-style="atomic-orbit"] body {
+  font-family: "Segoe UI", Aptos, Calibri, sans-serif;
+  background: var(--cp-bg);
+  color: var(--cp-text);
+}
+html[data-visual-style="atomic-orbit"] :is(h1,h2,h3,.brand,.eyebrow) {
+  letter-spacing: 0;
+}
+html[data-visual-style="atomic-orbit"] :is(.card,.reading,.notice,.review-gate) {
+  border-radius: 6px;
+  box-shadow: none;
+}
+html[data-visual-style="atomic-orbit"] :is(.host-heading,.masthead,.app-masthead) {
+  border-bottom: 1px solid var(--cp-border);
+}
+html[data-visual-style="atomic-orbit"] .brand {
+  color: var(--cp-accent);
+  font-weight: 650;
+}
+html[data-visual-style="atomic-orbit"] .hero h1 {
+  font-size: 36px;
+  letter-spacing: 0;
+}
+@media(max-width:600px) {
+  html[data-visual-style="atomic-orbit"] .hero h1 { font-size: 28px; }
+}
+
+*{box-sizing:border-box;letter-spacing:0}body{margin:0;font:16px/1.5 "Segoe UI",Aptos,Calibri,sans-serif;background:var(--cp-bg);color:var(--cp-text)}
+a{color:var(--cp-link);text-underline-offset:3px}button,select,input{font:inherit}button,select{color:var(--cp-text);background:var(--cp-surface);border:1px solid var(--cp-border-strong);border-radius:6px;min-height:44px}button{cursor:pointer}button:hover{background:var(--cp-accent-soft)}select{padding:8px 12px;max-width:100%}h1,h2,h3{line-height:1.2;letter-spacing:0}h1{font-size:28px;font-weight:650;margin:8px 0 16px}h2{font-size:22px;font-weight:650}h3{font-size:17px}p,li,dd,td,h1,h2,h3,a,label{overflow-wrap:anywhere}p{margin:0 0 14px}li+li{margin-top:10px}ul,ol{padding-left:22px}.wrap{width:min(1336px,calc(100% - 48px));margin-inline:auto}
+.site-header{border-bottom:1px solid var(--cp-border);background:var(--cp-surface)}.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:60px;padding-block:12px}.brand-line{font-size:18px;font-weight:650;text-decoration:none;color:var(--cp-text)}.text-link{display:inline-flex;align-items:center;gap:8px;min-height:40px}.icon{width:18px;height:18px;flex:none;vertical-align:middle}.icon-button{display:inline-grid;place-items:center;width:44px;height:44px;padding:0}.skip-link{position:fixed;top:8px;left:8px;z-index:30;transform:translateY(-200%);background:var(--cp-accent);color:var(--cp-accent-fg);padding:12px}.skip-link:focus{transform:translateY(0)}:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}
+.disclosure{border-bottom:1px solid var(--cp-border);background:var(--cp-surface-soft);padding:10px 0;color:var(--cp-text-muted);font-size:13px}.disclosure .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.disclosure strong{color:var(--cp-text)}.scenario-controls{display:flex;align-items:end;gap:24px;justify-content:space-between;padding:22px 0}.scenario-picker{flex:1;max-width:450px}.scenario-picker label{display:block;font-size:13px;font-weight:650;margin-bottom:5px}.scenario-picker select{width:100%}.scenario-paging{display:flex;align-items:center;gap:10px}.scenario-paging span{font-size:13px;color:var(--cp-text-muted);margin-right:8px;white-space:nowrap}
+.service-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:36px;align-items:start}.appliance-evidence,.case-context{min-width:0}#mount{border:1px solid var(--cp-border);border-radius:6px;background:var(--cp-surface)}#mount iframe{display:block;width:100%;height:650px;border:0;border-radius:6px;background:var(--cp-surface)}.bridge-state{font-size:12px;color:var(--cp-text-muted);padding-top:8px;min-height:30px;margin:0}.source-clock{display:flex;gap:24px;flex-wrap:wrap;margin:8px 0 0;padding-top:12px;border-top:1px solid var(--cp-border);font-size:12px;color:var(--cp-text-muted)}.source-clock dt{font-weight:600}.source-clock dd{margin:3px 0 0}.eyebrow{font-size:12px;font-weight:650;color:var(--cp-text-muted);margin:0}.case-summary{font-size:18px}.reported-context{font-size:13px;color:var(--cp-text-muted);border-left:3px solid var(--cp-border-strong);padding-left:12px}.next-step{border-top:1px solid var(--cp-border);padding-top:18px;margin-top:20px}.next-step .eyebrow{color:var(--cp-success);display:flex;align-items:center;gap:8px}.next-step h2{font-size:20px;margin:9px 0 12px}.next-step ol{font-size:14px}.review-choice{border:0;border-top:1px solid var(--cp-border);padding:12px 0 0;margin:18px 0 10px;display:flex;flex-wrap:wrap;gap:10px 18px}.review-choice legend{font-size:13px;font-weight:650;padding:0 8px 0 0}.review-choice label{display:flex;align-items:center;gap:7px;font-size:14px;min-height:32px}.review-choice input{accent-color:var(--cp-accent);width:17px;height:17px}.review-result{font-size:12px;color:var(--cp-text-muted);min-height:55px}.context-detail{border-top:1px solid var(--cp-border);font-size:14px}.context-detail summary{font-weight:650;cursor:pointer;min-height:44px;padding:12px 0}.context-detail ul{margin-top:0}.sources{padding-bottom:12px}.sources a{display:inline-block;min-height:28px}
+.evidence-band{margin-top:28px;padding:28px 0;border-top:1px solid var(--cp-border)}.evidence-band h2{margin:0 0 18px}.observation-list{max-width:1020px;font-size:15px}.evidence-columns{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1fr);gap:32px;margin-top:30px}.evidence-columns>section{min-width:0}.evidence-columns>section[hidden]{display:none}table{border-collapse:collapse;table-layout:fixed;width:100%;font-size:12px}caption{text-align:left;color:var(--cp-text-muted);margin-bottom:12px}th,td{border-bottom:1px solid var(--cp-border);text-align:left;vertical-align:top;padding:10px 7px}th{color:var(--cp-text-muted);font-weight:650}.event-list{list-style:none;padding:0;font-size:13px}.event-list li{border-left:2px solid var(--cp-border);padding:0 0 14px 14px}.event-time{display:block;color:var(--cp-text-muted);font-size:12px;margin-bottom:6px}.site-footer{background:var(--cp-bg-elevated);border-top:1px solid var(--cp-border);padding:24px 0;font-size:13px;color:var(--cp-text-muted)}.site-footer p{max-width:950px}
+html[data-skin="studio"][data-visual-style="atomic-orbit"]{--skin-hero:var(--cp-surface);--skin-hero-fg:var(--cp-text);--skin-card-radius:6px;--skin-section-space:36px;--skin-max-width:1240px}.hero{min-height:0!important}.hero::after{display:none}.hero-inner{padding:26px 0!important}.hero h1{font-size:32px!important;max-width:900px}.hero-summary{font-size:18px;max-width:850px}.hero-meta{margin-bottom:18px}.meta-item{padding:0;border:0}.hero-actions{gap:12px}.prototype-visual{margin:22px 0 0;max-width:100%}.prototype-visual img{width:100%;height:auto;max-height:365px;object-fit:contain;object-position:left center;border:1px solid var(--cp-border);border-radius:6px;background:var(--cp-surface)}.prototype-visual figcaption{font-size:12px;color:var(--cp-text-muted);margin-top:7px}.resource-card{box-shadow:none!important}.resource-body{min-height:210px;padding:20px}.resource-type{margin-bottom:12px}.resource-type .chip{border:0;padding:0}.chip+.chip{margin-left:6px}.section-heading{gap:24px;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);margin-bottom:20px}.section-heading h2{font-size:26px}.section-summary{font-size:16px}.resource-grid{gap:16px}.section-nav{flex-wrap:wrap;overflow:visible}.section-nav a{white-space:normal;padding:10px 0}.proof-band{padding:32px 0;border-bottom:1px solid var(--cp-border)}.proof-band h2{font-size:26px}.proof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}.proof-grid dt{font-size:14px;font-weight:650}.proof-grid dd{font-size:14px;margin:5px 0 18px;color:var(--cp-text-muted)}.proof-grid li{font-size:15px}.hub-disclosure{font-size:13px;color:var(--cp-text-muted);margin-top:14px}
+.prototype-visual{width:100%;margin-top:18px}.prototype-visual picture{display:block}.prototype-visual img{display:block;width:100%;height:410px;max-height:none;object-fit:cover;object-position:top left}.hero-summary{margin-bottom:12px}.hero-meta{margin-bottom:12px}.hero-meta .meta-item:first-child{display:none}.hero .hub-disclosure{margin:12px 0 0}.hero .eyebrow{margin-bottom:8px}
+.service-layout{row-gap:18px}.case-lead{grid-column:2;grid-row:1;min-width:0}.case-lead h2{font-size:20px;margin:8px 0 12px}.case-lead #immediate-step{font-size:14px;margin:0}.case-lead #review-mark{color:var(--cp-success);display:flex;align-items:center;gap:8px}.appliance-evidence{grid-column:1;grid-row:1 / span 2}.case-context{grid-column:2;grid-row:2}.next-step{margin-top:12px;padding-top:12px}
+@media(max-width:1100px){.service-layout{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px}.case-summary{font-size:17px}.wrap{width:calc(100% - 36px)}.section-nav{gap:12px}}
+@media(max-width:820px){.service-layout{grid-template-columns:1fr;gap:24px}.case-lead,.appliance-evidence,.case-context{grid-column:1;grid-row:auto}.case-context{border-top:1px solid var(--cp-border);padding-top:22px}.evidence-columns,.proof-grid{grid-template-columns:1fr}.review-result{min-height:0}.resource-grid{grid-template-columns:1fr!important}.section-heading{grid-template-columns:1fr;gap:4px}.section-nav{gap:10px}.header-inner{align-items:start;flex-wrap:wrap}.site-header{position:static}.prototype-visual img{max-height:none}.resource-body{min-height:0}.hero-meta{font-size:12px}.proof-band{padding:24px 0}}
+@media(max-width:500px){.wrap{width:calc(100% - 28px)}.header-inner{gap:8px}.brand-line{font-size:16px}.text-link{font-size:13px;min-height:30px}.scenario-controls{gap:12px;align-items:end;flex-wrap:wrap;padding:16px 0}.scenario-picker{flex-basis:100%;max-width:none}.scenario-paging{margin-left:auto}.scenario-paging span{margin-right:12px}.disclosure .wrap{gap:4px}.source-clock{gap:10px;display:grid;grid-template-columns:1fr 1fr}h1{font-size:24px}.case-summary{font-size:16px}.evidence-band h2{font-size:22px}table,thead,tbody,tr,td{display:block}thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}tbody{display:grid;grid-template-columns:1fr 1fr;gap:12px}tr{border:1px solid var(--cp-border);border-radius:6px;padding:8px}td{border:0;padding:3px;font-size:12px}td::before{content:attr(data-label);display:block;font-size:11px;color:var(--cp-text-muted)}.hero h1{font-size:28px!important}.hero-summary{font-size:16px}.hero-actions{display:grid}.hero-meta{gap:5px}.section-heading h2,.proof-band h2{font-size:23px}.prototype-visual{margin-top:18px}.hero-inner{padding:20px 0!important}}
+@media(max-width:500px){.prototype-visual img{height:300px;object-fit:cover}.hero h1{margin-bottom:12px}.hero .hero-meta{display:none}.hero-actions .button{min-height:44px}.hero .hero-summary{font-size:16px}.prototype-visual figcaption{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media print{.site-header,.scenario-controls,.review-choice,.hero-actions,.section-nav,.skip-link{display:none}.wrap{width:100%}.service-layout,.evidence-columns,.proof-grid{display:block}#mount iframe{height:900px}.context-detail{display:block}.context-detail>ul{display:block}.resource-card,.next-step,tr{break-inside:avoid}.prototype-visual img{max-height:300px}body{font-size:12px}.disclosure{border:1px solid var(--cp-border)}}
+
+  html.project-hub{scroll-padding-top:84px}@media(max-width:820px){html.project-hub{scroll-padding-top:12px}}
+  .project-hub .header-inner{gap:18px;flex-wrap:wrap}.project-hub .brand-line{font-size:20px;white-space:nowrap}.project-hub .section-nav{gap:18px;justify-content:flex-end}.project-hub .section-nav a{font-size:13px;min-height:44px;display:inline-flex;align-items:center}.project-hub .hero{border-bottom:1px solid var(--cp-border)}.project-hub .hero-inner{padding:30px 0!important}.project-hub .hero h1{max-width:1020px}.project-hub .hero-summary{max-width:980px}.project-hub .hero-meta{margin:12px 0 18px}.project-hub .hero-meta .meta-item:first-child{display:inline-flex}.project-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:20px 0 0;margin:24px 0 0;border-top:1px solid var(--cp-border)}.project-strip dt{font-size:12px;color:var(--cp-text-muted);margin-bottom:6px}.project-strip dd{font-size:16px;font-weight:600;margin:0}.prototype-status{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:20px 0}.prototype-status h3{font-size:17px;margin:0 0 8px}.prototype-status p{font-size:15px;margin:0;color:var(--cp-text-muted)}.project-hub .prototype-visual{margin:24px 0 16px}.project-hub .prototype-visual img{height:auto;max-height:410px;object-fit:contain}.project-hub .prototype-visual a{display:block}.project-hub .hub-disclosure{margin:0 0 18px}.project-hub .resource-body{min-height:0}.project-hub .resource-link{margin-top:12px}.project-hub #tokenomics{background:var(--cp-surface-soft)}.tokenomics-state{font-size:13px;color:var(--cp-text-muted);margin:0 0 8px}.tokenomics-details{max-width:900px;border-top:1px solid var(--cp-border);padding-top:8px}.tokenomics-details summary{font-weight:600;cursor:pointer;min-height:44px;padding:10px 0}.tokenomics-details p,.tokenomics-details li{font-size:15px}.project-hub .site-footer{font-size:13px}
+  .brand-lockup{display:flex;align-items:center;gap:14px;color:var(--cp-text)}.brand-mark{display:inline-flex;align-items:center;min-height:32px}.customer-wordmark{font-size:13px;font-weight:750;line-height:1;white-space:nowrap}.customer-wordmark+.customer-wordmark{padding-left:14px;border-left:1px solid var(--cp-border)}.microsoft-lockup{gap:6px;font-size:12px;font-weight:600}.microsoft-window{display:grid;grid-template-columns:repeat(2,6px);grid-template-rows:repeat(2,6px);gap:1px;width:13px;height:13px}.microsoft-window i:nth-child(1){background:#f25022}.microsoft-window i:nth-child(2){background:#7fba00}.microsoft-window i:nth-child(3){background:#00a4ef}.microsoft-window i:nth-child(4){background:#ffb900}.atom-lockup{gap:7px;font-size:13px;font-weight:700;color:var(--cp-accent)}.atom-mark{position:relative;width:27px;height:27px;display:inline-block;flex:none}.atom-mark i{position:absolute;left:2px;top:9px;width:23px;height:9px;border:1.5px solid currentColor;border-radius:50%}.atom-mark i:nth-child(2){transform:rotate(60deg)}.atom-mark i:nth-child(3){transform:rotate(-60deg)}.atom-mark b{position:absolute;left:11px;top:11px;width:5px;height:5px;border-radius:50%;background:currentColor}.brand-divider{width:1px;height:24px;background:var(--cp-border)}
+  @media(max-width:820px){.project-hub .section-nav{display:flex;justify-content:flex-start;gap:4px 16px}.project-strip,.prototype-status{grid-template-columns:1fr;gap:16px}.project-strip{margin-top:18px;padding-top:16px}.project-strip>div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px}.project-strip dt{margin:0}.project-strip dd{font-size:14px}.project-hub .hero-inner{padding:22px 0!important}.project-hub .hero-meta{display:flex;flex-wrap:wrap}.project-hub .hero-meta .meta-item:first-child{display:none}.project-hub .prototype-visual img{max-height:none}.project-hub .brand-line{font-size:18px}}
+  @media(max-width:620px){.brand-lockup{width:100%;justify-content:space-between;gap:8px}.customer-wordmark{font-size:11px}.customer-wordmark+.customer-wordmark{padding-left:8px}.microsoft-lockup{font-size:11px}.atom-lockup{font-size:12px}.brand-divider{display:none}}
+  @media print{.project-strip,.prototype-status{display:block}.project-strip>div,.prototype-status>div{margin-bottom:12px}.tokenomics-details>ul,.tokenomics-details>p{display:block}.project-hub .site-header{display:block}.project-hub .header-inner{min-height:0}.project-hub .section-nav{display:none}}/* VIDEO_STORY_START */
+.video-story{padding:52px 0;border-bottom:1px solid var(--cp-border);background:var(--cp-bg-elevated)}.video-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.65fr);gap:30px;align-items:start}.video-frame{overflow:hidden;border:1px solid var(--cp-border);border-radius:6px;background:#071f33}.video-frame video{display:block;width:100%;aspect-ratio:16/9;background:#071f33}.video-copy h2{font-size:30px}.video-copy p{color:var(--cp-text-muted)}.video-facts{display:grid;gap:0;margin:22px 0}.video-facts div{padding:13px 0;border-top:1px solid var(--cp-border)}.video-facts dt{font-size:12px;font-weight:800;text-transform:uppercase;color:var(--cp-text-muted)}.video-facts dd{margin:4px 0 0;font-weight:650}.video-links{display:flex;flex-wrap:wrap;gap:14px}.video-links a{font-weight:750}@media(max-width:900px){.video-layout{grid-template-columns:1fr}.video-copy h2{font-size:26px}}@media print{.video-frame{display:none}.video-layout{display:block}}
+/* VIDEO_STORY_END */</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand-line brand-lockup" href="index.html" aria-label="Sub-Zero, Wolf, Microsoft, and SE OS customer project hub">
+        <span class="brand-mark customer-wordmark">SUB-ZERO</span>
+        <span class="brand-mark customer-wordmark">WOLF</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-mark microsoft-lockup"><span class="microsoft-window" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Microsoft</span>
+        <span class="brand-mark atom-lockup"><span class="atom-mark" aria-hidden="true"><i></i><i></i><i></i><b></b></span>SE OS</span>
+      </a>
+      <nav class="section-nav" aria-label="Page sections"><a href="#video-story">Watch</a><a href="#gathered-info">Gathered information</a><a href="#prototype-state">Demo state</a><a href="#priority">Use cases</a><a href="#next-steps">Next steps</a><a href="#tokenomics">Tokenomics</a></nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hub-title">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Sub-Zero Group / Customer project hub</p>
+        <h1 id="hub-title">Sub-Zero Connected Appliance Service</h1>
+        <p class="hero-summary">A shared view of the IoT service project: what we have learned, what Asset 360 demonstrates, and the decisions needed for a connected proof.</p>
+        <div class="hero-meta" aria-label="Resource center details">
+          <span class="meta-item">Prepared for Sub-Zero Group</span>
+          <span class="meta-item">Sub-Zero service and technology teams</span>
+          <span class="meta-item">Updated 2026-09-21</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#video-story">Watch the story</a>
+          <a class="button button-secondary" href="prototype.html">Open the prototype</a>
+        </div><dl class="project-strip" aria-label="Project snapshot"><div><dt>Current stage</dt><dd>Demo-ready; customer data validation next</dd></div><div><dt>Prototype</dt><dd>Three verified demo routes plus five Cove scenarios</dd></div><div><dt>Data readiness</dt><dd>Illustrative telemetry; customer mapping pending</dd></div></dl>
+      </div>
+    </section>
+
+    <!-- VIDEO_STORY_SECTION_START -->
+    <section class="video-story" id="video-story" aria-labelledby="video-story-title">
+      <div class="wrap video-layout">
+        <div class="video-frame">
+          <video controls preload="metadata" poster="video/connected-service-story-poster.png" aria-describedby="video-story-summary">
+            <source src="video/connected-service-story.mp4" type="video/mp4">
+            <track kind="captions" src="video/connected-service-story.vtt" srclang="en" label="English" default>
+            Your browser cannot play this video. <a href="video/connected-service-story.mp4">Download the narrated demo</a>.
+          </video>
+        </div>
+        <div class="video-copy">
+          <p class="eyebrow">Narrated customer story · 2:30</p>
+          <h2 id="video-story-title">Connected service, grounded in evidence</h2>
+          <p id="video-story-summary">See how one governed, read-only evidence contract supports a service case, Microsoft 365 Copilot, and Copilot Cowork while keeping diagnosis and service decisions with qualified people.</p>
+          <dl class="video-facts"><div><dt>Demonstration data</dt><dd>Synthetic and deterministic</dd></div><div><dt>Verified routes</dt><dd>Dynamics 365, M365 Copilot, Cowork</dd></div><div><dt>Runtime boundary</dt><dd>No CRM write or appliance control</dd></div></dl>
+          <div class="video-links"><a href="video/connected-service-story.mp4">Download MP4</a><a href="video/connected-service-story.srt">Download captions</a></div>
+        </div>
+      </div>
+    </section>
+<!-- VIDEO_STORY_SECTION_END -->
+    <section class="content-band" id="gathered-info" aria-labelledby="gathered-info-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Current understanding</p>
+            <h2 id="gathered-info-title">Gathered so far</h2>
+          </div>
+          <p class="section-summary">Discussion feedback guides the scenarios. Public product guidance grounds the service limits. Example data illustrates the experience; it is not a customer telemetry export.</p>
+        </div>
+        <div class="resource-grid">
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Service feedback</span>
+              <span class="chip chip-format">Scenario input</span>
+            </div>
+            <h3>Five service conversations</h3>
+            <p class="resource-description">Draining, cleaning, service codes, connectivity and water on the floor. Draining, code review and leak reports are the first demonstration paths.</p>
+            <a class="resource-link" href="#priority">Explore the scenarios</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Knowledge</span>
+              <span class="chip chip-format">Public guidance</span>
+            </div>
+            <h3>Official knowledge base</h3>
+            <p class="resource-description">Public Sub-Zero, Wolf and Cove guidance supports the next service step. Code 600149 is diverter-valve excessive lap time, not a confirmed circulation-pump diagnosis.</p>
+            <a class="resource-link" href="https://www.subzero-wolf.com/assistance/answers">Open the knowledge base</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Data readiness</span>
+              <span class="chip chip-format">Validation needed</span>
+            </div>
+            <h3>Data definitions still to confirm</h3>
+            <p class="resource-description">Cycle and component events, readings, settings, source timestamps, freshness and case-to-appliance mapping. The available fields, units and permissions need customer validation.</p>
+            <a class="resource-link" href="#next-steps">Review the data questions</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+    <section class="content-band" id="prototype-state" aria-labelledby="prototype-state-title"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Current delivery</p><h2 id="prototype-state-title">Prototype state</h2></div><p class="section-summary">The synthetic demo is verified across Dynamics 365, Microsoft 365 Copilot, and Copilot Cowork. Customer data mapping and customer-owned deployment remain future proof steps.</p></div><div class="prototype-status"><div><h3>Available now</h3><p>Five Cove scenarios, the Asset 360 appliance card, history, source freshness and a human-reviewed next step. Browser and mobile-layout checks completed.</p></div><div><h3>Still illustrative</h3><p>Readings and event histories are deterministic examples. The prototype has no live customer data feed and does not control an appliance or update a case.</p></div><div><h3>Verified demo routes</h3><p>Master CE Mfg, the published Connected Appliance Advisor, and the Cowork plugin have completed bounded read-only runtime checks with synthetic evidence.</p></div></div><p class="hub-disclosure"><strong>Illustrative telemetry / Prototype, not connected.</strong> Customer data mapping pending.</p><figure class="prototype-visual"><a href="prototype.html"><picture><source media="(max-width:500px)" srcset="assets/prototype-mobile.png"><img src="assets/prototype.png" width="740" height="400" alt="Cove dishwasher appliance card with example drain attempts and water-level readings"></picture></a><figcaption>Appliance card from the interactive prototype.</figcaption></figure><a class="button button-primary" href="prototype.html">Open Asset 360 IoT</a></div></section>
+    <section class="content-band" id="priority" aria-labelledby="priority-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Three priority conversations</p>
+            <h2 id="priority-title">Evidence, then the next step</h2>
+          </div>
+          <p class="section-summary">Start with draining, a service code or water on the floor.</p>
+        </div>
+        <div class="resource-grid">
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">01 / Drain</span>
+              <span class="chip chip-format">Interactive</span>
+            </div>
+            <h3>Not draining</h3>
+            <p class="resource-description">Ten cycles, six latest drain attempts and no reported level drop. Review installation and drain guidance without assuming a cause.</p>
+            <a class="resource-link" href="prototype.html?scenario=drain">Review draining</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">02 / Error</span>
+              <span class="chip chip-format">Interactive</span>
+            </div>
+            <h3>Call for Service: 600149</h3>
+            <p class="resource-description">The official meaning is diverter valve excessive lap time. Inspect recurrence and prepare context for qualified service, not a parts order.</p>
+            <a class="resource-link" href="prototype.html?scenario=error">Review the service code</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">03 / Leak</span>
+              <span class="chip chip-format">Interactive</span>
+            </div>
+            <h3>Water on the floor</h3>
+            <p class="resource-description">A leak input and a stopped-state report do not establish safety. Verify the physical situation with Customer Care or certified service.</p>
+            <a class="resource-link" href="prototype.html?scenario=leak">Review the leak report</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+    <section class="content-band" id="more" aria-labelledby="more-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">More service contexts</p>
+            <h2 id="more-title">Cleaning and connectivity</h2>
+          </div>
+          <p class="section-summary">Requested fields and source age matter as much as the values that happen to be present.</p>
+        </div>
+        <div class="resource-grid">
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">04 / Cleaning</span>
+              <span class="chip chip-format">Interactive</span>
+            </div>
+            <h3>Dishes not clean</h3>
+            <p class="resource-description">Review Quick cycles, interruptions and illustrative wash-water readings. Model-specific targets, turbidity and dispenser inputs remain unknown.</p>
+            <a class="resource-link" href="prototype.html?scenario=cleaning">Review cleaning</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">05 / Network</span>
+              <span class="chip chip-format">Interactive</span>
+            </div>
+            <h3>Offline after router change</h3>
+            <p class="resource-description">Thirty days of fictional signal history end in missing reports. Separate cached evidence from a page refresh; do not infer hardware health.</p>
+            <a class="resource-link" href="prototype.html?scenario=offline">Review connectivity</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Support</span>
+              <span class="chip chip-format">Public reference</span>
+            </div>
+            <h3>Official service references</h3>
+            <p class="resource-description">Public product guidance supports the next conversation. Model-specific diagnosis and physical service remain with qualified people.</p>
+            <a class="resource-link" href="https://www.subzero-wolf.com/assistance/answers/brandless/customer-care-contact-information">Open Customer Care</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+    <section class="content-band" id="next-steps" aria-labelledby="next-steps-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Proposed sequence</p>
+            <h2 id="next-steps-title">Next steps</h2>
+          </div>
+          <p class="section-summary">Validate the inputs, prove the integration, then measure value. Scope and ownership are decisions to agree, not commitments already made.</p>
+        </div>
+        <div class="resource-grid">
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">01 / Data</span>
+              <span class="chip chip-format">To agree</span>
+            </div>
+            <h3>Validate the evidence</h3>
+            <p class="resource-description">Agree an authorized sample and model list. Confirm the field dictionary, units, timestamps, missing-data behavior and customer-to-case-to-asset relationships.</p>
+            <a class="resource-link" href="#gathered-info">Review gathered information</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">02 / Integration</span>
+              <span class="chip chip-format">Demo tenant verified</span>
+            </div>
+            <h3>Prove the connected workflow</h3>
+            <p class="resource-description">Use the verified demo routes to agree the customer-owned identity, source mapping, permissions, and acceptance checks for a bounded proof.</p>
+            <a class="resource-link" href="#prototype-state">Review prototype state</a>
+          </div>
+        </article>
+        <article class="resource-card">
+
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">03 / Value</span>
+              <span class="chip chip-format">Future proof</span>
+            </div>
+            <h3>Measure outcomes and run cost</h3>
+            <p class="resource-description">Agree handle-time and resolution baselines, compare a bounded proof, and develop tokenomics once workload, data and hosting assumptions are known.</p>
+            <a class="resource-link" href="#measurement-plan">Review the measurement plan</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+  <section id="measurement-plan" class="proof-band" aria-labelledby="measurement-title"><div class="wrap"><h2 id="measurement-title">A bounded proof, with measures agreed first</h2><div class="proof-grid"><div><p>Proposed validation only. No machine count, dataset access, timeline or deployment has been approved.</p><ol><li>Confirm an authorized sample, exact models and consent with the customer.</li><li>Validate the dataset, API, permissions, field dictionary, units and source timestamps. Preserve missing values.</li><li>Compare the current service process with evidence-assisted human review for draining, code 600149 and leak reports.</li><li>Agree baseline definitions and observation periods before collecting outcomes. Review accuracy and service safety before expansion.</li></ol><p>Fewer questions and fewer unnecessary visits are hypotheses to test, not achieved results. No baseline, savings or ROI has been measured here.</p><p>The Asset 360 pattern is verified with synthetic evidence in Dynamics 365, Microsoft 365 Copilot, and Cowork. Customer-owned integration, authorization, data mapping, and acceptance remain to be validated.</p></div><dl><dt>Average handle time</dt><dd>Total handling and after-call work time divided by handled contacts.</dd><dt>First-call resolution</dt><dd>Eligible issues resolved in the initial contact without a follow-up for the same issue, using an agreed observation period.</dd><dt>First-time fix</dt><dd>Eligible service jobs resolved on the first visit without a return for the same issue.</dd><dt>Repeat visits</dt><dd>Additional visits for the same issue within an agreed observation period.</dd><dt>CSAT</dt><dd>Customer satisfaction response using an agreed survey and response-rate definition.</dd></dl></div></div></section><section id="tokenomics" class="proof-band" aria-labelledby="tokenomics-title"><div class="wrap"><p class="tokenomics-state">Planned after scope and usage are agreed</p><h2 id="tokenomics-title">Tokenomics</h2><p>To be developed after the data, usage and hosting assumptions are agreed. No estimate or savings claim is published yet.</p><details class="tokenomics-details"><summary>Inputs needed before estimating</summary><ul><li>Expected cases, active appliances and interactions per month</li><li>Telemetry frequency, query windows, retention and data-source costs</li><li>Model choice, prompts, context size and model calls per interaction</li><li>Hosting, connectors, licensing, security and support requirements</li></ul><p>Separate one-time implementation effort from recurring run cost; show cost per interaction and agreed low, expected and high usage cases. Benefits are evaluated against a measured service baseline.</p></details></div></section></main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>MCAPS OS | SE OS. Sub-Zero connected appliance service project. Prototype evidence supports human review; service decisions remain with qualified people.</span>
+      <span>Studio skin</span>
+    </div>
+  </footer>
+</body>
+</html>
