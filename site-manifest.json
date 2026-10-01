@@ -1,0 +1,215 @@
+{
+  "schema": "CUSTOMER_SITE_MANIFEST/1",
+  "packageVersion": "0.2.0",
+  "generatedOn": "2026-09-30",
+  "customer": {
+    "name": "Sub-Zero Group",
+    "slug": "subzero"
+  },
+  "title": "Sub-Zero Connected Appliance Service | MCAPS OS | SE OS",
+  "purpose": "Customer-facing project hub with a real-host Asset 360 film, interactive Cove prototype, technical delivery set, deployment options, and customer-validation next steps.",
+  "audience": "Sub-Zero service and technology teams",
+  "skin": {
+    "id": "studio",
+    "name": "Studio",
+    "registry": "CUSTOMER_HUB_SKIN_REGISTRY/1"
+  },
+  "branding": {
+    "mode": "skin-only",
+    "evidenceTier": "official-site-observed-not-applied",
+    "exactTpidResolution": true,
+    "observedCandidatesAllowed": false,
+    "bundledCustomerAssets": false,
+    "effectiveVisuals": "Microsoft-neutral Atomic/Orbit",
+    "hostBrand": "MCAPS OS | SE OS",
+    "coBrandLockup": [
+      "Sub-Zero",
+      "Wolf",
+      "Microsoft",
+      "SE OS Atom"
+    ],
+    "assetTreatment": "Inline typographic and geometric marks; no downloaded customer assets"
+  },
+  "generatedFiles": [
+    "index.html",
+    "prototype.html",
+    "assets/prototype.png",
+    "assets/prototype-mobile.png",
+    "gate.js",
+    "README.md",
+    "robots.txt",
+    "site-manifest.json",
+    "THIRD-PARTY-NOTICES.txt",
+    "video/connected-service-story.mp4",
+    "video/connected-service-story.vtt",
+    "video/connected-service-story.srt",
+    "video/connected-service-story-poster.png",
+    "video/asset360-connected-service-film.mp4",
+    "video/asset360-connected-service-film.vtt",
+    "video/asset360-connected-service-film.srt",
+    "video/asset360-connected-service-film-poster.jpg",
+    "solution-brief.html",
+    "architecture.html",
+    "technical-details.html",
+    "solution-design.html",
+    "deployment-options.html"
+  ],
+  "referencedAssets": [
+    "prototype.html",
+    "assets/prototype.png",
+    "assets/prototype-mobile.png",
+    "video/connected-service-story.mp4",
+    "video/connected-service-story.vtt",
+    "video/connected-service-story.srt",
+    "video/connected-service-story-poster.png",
+    "video/asset360-connected-service-film.mp4",
+    "video/asset360-connected-service-film.vtt",
+    "video/asset360-connected-service-film.srt",
+    "video/asset360-connected-service-film-poster.jpg",
+    "solution-brief.html",
+    "architecture.html",
+    "technical-details.html",
+    "solution-design.html",
+    "deployment-options.html"
+  ],
+  "externalLinks": [
+    "https://www.subzero-wolf.com/assistance/answers/cove/dishwasher/cove-dishwasher-does-not-drain",
+    "https://www.subzero-wolf.com/assistance/answers/cove/dishwasher/cove-dishwasher-error-code-600149",
+    "https://www.subzero-wolf.com/assistance/answers/multi-brand/subzero-wolf-and-cove-connected-appliance-change-internet-provider-or-network-name",
+    "https://www.subzero-wolf.com/assistance/answers/cove/dishwasher/cove-dishwasher-cleaning-guide",
+    "https://www.subzero-wolf.com/assistance/answers/brandless/customer-care-contact-information",
+    "https://www.subzero-wolf.com/assistance/answers"
+  ],
+  "gate": {
+    "type": "password",
+    "mechanism": "gate.js",
+    "configuration": "configured",
+    "expires": "2026-12-31",
+    "softGate": true,
+    "expiryApproval": "bound to final package publication approval"
+  },
+  "destination": {
+    "state": "published-live",
+    "public": true,
+    "url": "https://billwhalenmsft.github.io/subzero-asset360-engagement/",
+    "repository": "billwhalenmsft/subzero-asset360-engagement"
+  },
+  "externalEffects": {
+    "uploaded": true,
+    "published": true,
+    "registered": true,
+    "shared": false,
+    "messageSent": false
+  },
+  "readyToPublish": true,
+  "nativeInstalled": true,
+  "projectState": {
+    "stage": "v1-demo-ready-customer-validation-next",
+    "tokenomics": "deferred",
+    "customerDataConnected": false,
+    "verifiedDemoHosts": [
+      "Dynamics 365",
+      "Microsoft 365 Copilot",
+      "Copilot Cowork"
+    ]
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "1a79edcf9a2503507ef7eeb2b72ee92d7eda5dcb9b0a706b3a3bbf5d82d2da3e"
+    },
+    {
+      "path": "prototype.html",
+      "sha256": "026227cf4121cf1327fa34b5dfe020d9cd6fb270e605529f917231dfc6d816ef"
+    },
+    {
+      "path": "assets/prototype.png",
+      "sha256": "3fa07a24c0c1e7cc5ecac18c71d195de4d90a264a68d9e23f32a09e9dbd94bdb"
+    },
+    {
+      "path": "assets/prototype-mobile.png",
+      "sha256": "08ee63fbfe3b498bdeaa774ddcac06f8c350e88e4393831474d64132daf6b00a"
+    },
+    {
+      "path": "gate.js",
+      "sha256": "3e5c23c17ee88afda4baf2db090f19db7f35a9e40f4822ab21b4f8c44410d49f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6c287bc7bee57eff5eeb62c97269fcab9257e588d75a4319821415bb14e57808"
+    },
+    {
+      "path": "robots.txt",
+      "sha256": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.txt",
+      "sha256": "16ba165f4e1f78a0617665a833551a71e33f0f839d8caa5e0cd6153c278c5c82"
+    },
+    {
+      "path": "video/connected-service-story.mp4",
+      "sha256": "3464750bc4ffd65497e5e40f36f0d4763f6bbae220eda361f2670e5f69b6d744"
+    },
+    {
+      "path": "video/connected-service-story.vtt",
+      "sha256": "8eb2c8939637b172260a6c7550a9ec3ececa0c7a11bf8561500dc8adc125e132"
+    },
+    {
+      "path": "video/connected-service-story.srt",
+      "sha256": "2394698fb20e38092989afa0969c05183f30ec7502cbdd438093664ef8e18eed"
+    },
+    {
+      "path": "video/connected-service-story-poster.png",
+      "sha256": "4b0c2990bcb5e2cb33bce6fe4dc490b56de6e62c77fd57133e7a082ed8a7939a"
+    },
+    {
+      "path": "video/asset360-connected-service-film.mp4",
+      "sha256": "4a9f7de901be42122dc54394762cfc21a88455bc686622b35177bf725fd6e626"
+    },
+    {
+      "path": "video/asset360-connected-service-film.vtt",
+      "sha256": "e6f6050b001aa31c26712cbe545eac4221e19ef0f4251d9b5e2f5d2b6f6499af"
+    },
+    {
+      "path": "video/asset360-connected-service-film.srt",
+      "sha256": "b1612eadd900f8066c4bb27274faee30549e5bd95bce975fd755d03f010779b3"
+    },
+    {
+      "path": "video/asset360-connected-service-film-poster.jpg",
+      "sha256": "a711a45d19bdd069258845a108492815fe59102ff3afeefcf7063fc718ce2387"
+    },
+    {
+      "path": "solution-brief.html",
+      "sha256": "4d08e987f9dd88fb97e9b8a39b7c390a24226af7b845cde69d6ba8103986de83"
+    },
+    {
+      "path": "architecture.html",
+      "sha256": "7d0f4494dc228682df0d18a585f6a8283825c3a67cd0776145768bbd55fae451"
+    },
+    {
+      "path": "technical-details.html",
+      "sha256": "25a9a05ef4046779120ceed34b6ec1337fc0c351cf1d5682c335bf00e6543e29"
+    },
+    {
+      "path": "solution-design.html",
+      "sha256": "1344341ec931cdf2751acdf51b513036270e6eb2f5e57c3f0939cb960e510da2"
+    },
+    {
+      "path": "deployment-options.html",
+      "sha256": "13342259eda48b814635dd312f4d95c52ab77a29c3af66e0edfc3c65e65071b5"
+    }
+  ],
+  "filmUpdate": {
+    "state": "staged-for-publication",
+    "durationSeconds": 78,
+    "filmSha256": "4a9f7de901be42122dc54394762cfc21a88455bc686622b35177bf725fd6e626",
+    "story": "Real Dynamics 365 and Cowork evidence with governed action-ready architecture",
+    "currentDemoBoundary": "read-only",
+    "supportedTargetActions": [
+      "case update",
+      "work dispatch",
+      "approved device operation"
+    ],
+    "publicationApprovalRequired": true
+  }
+}
